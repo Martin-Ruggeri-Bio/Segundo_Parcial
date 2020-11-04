@@ -4,6 +4,6 @@ python:
 install:
     - pip install -r requirements.txt
 script:
-    - coverage run test_ejecutador.py 
+    - coverage run test_tateti.py 
 after_success:
     - coveralls
