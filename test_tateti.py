@@ -77,14 +77,14 @@ class Test(unittest.TestCase):
         game.board = board
         self.assertEqual(game.win(), result)
 
-    '''def test_game(self):
+    def test_game(self):
         game = TaTeTi()
         game.board = {'1.1': ' o ', '1.2': ' o ', '1.3': ' x ',
                       '2.1': ' x ', '2.2': ' x ', '2.3': ' o ',
                       '3.1': ' o ', '3.2': ' x ', '3.3': '3.3'}
         game.valid = ['3.3']
         with patch('builtins.input', side_effect=['1.1', '2.2', '3.3']):
-            self.assertEqual(game.game(), 'Ninguno')'''
+            self.assertEqual(game.game(), 'Ninguno')
 
 
 if __name__ == '__main__':

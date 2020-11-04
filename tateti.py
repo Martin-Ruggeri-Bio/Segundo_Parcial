@@ -1,5 +1,5 @@
 class TaTeTi():
-    def __init__(self, piece=0, board=[], valid=[]):
+    def __init__(self, piece='', board=[], valid=[]):
         self.piece = piece
         self.board = board
         self.valid = valid
@@ -32,9 +32,9 @@ class TaTeTi():
 
     def __str__(self):
         return "%s|%s|%s\n---+---+---\n%s|%s|%s\n---+---+---\n%s|%s|%s" % (
-                self._board['1.1'], self._board['1.2'], self._board['1.3'],
-                self._board['2.1'], self._board['2.2'], self._board['2.3'],
-                self._board['3.1'], self._board['3.2'], self._board['3.3'])
+                self.board['1.1'], self.board['1.2'], self.board['1.3'],
+                self.board['2.1'], self.board['2.2'], self.board['2.3'],
+                self.board['3.1'], self.board['3.2'], self.board['3.3'])
     
     def input_position(self):
         bandera = True
@@ -48,22 +48,22 @@ class TaTeTi():
         return posicion
     
     def win(self):
-        ganador = False
-        tablero={0: self._board['1.1'], 1: self._board['1.2'], 2: self._board['1.3'],
-                 3: self._board['2.1'], 4: self._board['2.2'], 5: self._board['2.3'],
-                 6: self._board['3.1'], 7: self._board['3.2'], 8: self._board['3.3']}
+        tablero = {0: self.board['1.1'], 1: self.board['1.2'], 2: self.board['1.3'],
+                   3: self.board['2.1'], 4: self.board['2.2'], 5: self.board['2.3'],
+                   6: self.board['3.1'], 7: self.board['3.2'], 8: self.board['3.3']}
         if tablero[0]!='1.1' and tablero[0]==tablero[4] and tablero [4]==tablero[8]:
-            ganador = True
+            return True
         if tablero[2]!='1.3' and tablero[2]==tablero[4] and tablero [4]==tablero[6]:
-            ganador = True
+            return True
         for i in range (0,3):
-            if tablero[i]!=" " and tablero[i]==tablero[i+3] and tablero[i]==tablero[i+6]:
-                ganador = True
+            if tablero[i] == ' x ' or tablero[i] == ' o ':
+                if tablero[i]==tablero[i+3] and tablero[i]==tablero[i+6]:
+                    return True
         for i in range (0,7,3):
             if tablero[i] == ' x ' or tablero[i] == ' o ':
                 if tablero[i] == tablero[i+1] and tablero[i] == tablero[i+2]:
-                    ganador = True
-        return ganador
+                    return True
+        return False
 
     def game(self):
         print(self)
